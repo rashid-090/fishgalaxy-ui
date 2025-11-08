@@ -368,7 +368,7 @@ const AddProducts = () => {
                           className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                         />
                         <label htmlFor="isLatestProduct" className="text-sm text-gray-700">
-                          Latest Product
+                        New Arrivals
                         </label>
                       </div>
                     </div>

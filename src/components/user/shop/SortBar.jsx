@@ -29,7 +29,7 @@ const SortBar = ({ sort, setSort, totalCount, setShowFilters }) => {
             <option value="">Newest First</option>
             <option value="price-asc">Price: Low to High</option>
             <option value="price-desc">Price: High to Low</option>
-            <option value="latest">Latest Products</option>
+            <option value="latest">New Arrivals</option>
             <option value="offers">Special Offers</option>
           </select>
         </div>

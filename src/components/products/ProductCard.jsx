@@ -88,7 +88,7 @@ const ProductCard = ({ product, key, isLatestProduct = false, isOfferProduct = f
                             )}
                         </div>
 
-                        {/* Latest Product Tag */}
+                        {/* New Arrivals Tag */}
 
 
                         {/* Add to Cart Button */}

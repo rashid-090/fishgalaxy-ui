@@ -367,7 +367,7 @@ const EditProduct = () => {
                 </label>
               </div>
 
-              {/* Latest Product Checkbox */}
+              {/* New Arrivals Checkbox */}
               <div className="flex items-center">
                 <input
                   type="checkbox"
@@ -381,7 +381,7 @@ const EditProduct = () => {
                   className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
                 />
                 <label htmlFor="isLatestProduct" className="admin-label ml-2 mb-0">
-                  Latest Product
+                  New Arrivals
                 </label>
               </div>
             </div>
