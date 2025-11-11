@@ -68,11 +68,11 @@ const AdminLayout = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex overflow-hidden">
-      <div className="md:w-64 fixed h-full bg-gray-800 text-white">
+    <div className="min-h-screen bg-gray-50 flex overflow-y-hidden">
+      <div className="!z-50 md:w-64 fixed h-full bg-gray-800 text-white">
         <AdminSidebar />
       </div>
-      <main className="flex-1 flex flex-col pt-16 md:pt-5 md:ml-64 p-5">
+      <main className=" flex-1 flex flex-col pt-16 md:pt-5 md:ml-64 p-5">
         <Outlet />
       </main>
     </div>

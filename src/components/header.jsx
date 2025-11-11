@@ -2,17 +2,21 @@ import React, { useState, useEffect, useRef } from "react";
 import { CgMenuRight } from "react-icons/cg";
 import { VscClose } from "react-icons/vsc";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { MdAccountCircle, MdLogout, MdManageAccounts, MdShoppingBag } from "react-icons/md";
+import {
+  MdAccountCircle,
+  MdLogout,
+  MdManageAccounts,
+  MdShoppingBag,
+} from "react-icons/md";
 import { IoMdCart } from "react-icons/io";
 import AllcategModal from "../components/products/allCateogmodal";
 import CartModal from "./products/CartModal";
-import { pr1 } from "../assets";
+import { Mlogo, pr1 } from "../assets";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/userActions";
-import axios from 'axios';
+import axios from "axios";
 import { URL } from "../Common/api";
 import { config } from "../Common/configurations";
-
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,10 +29,7 @@ const Header = () => {
 
   const location = useLocation();
 
-
-  const { cart, loading } = useSelector(
-    (state) => state.cart
-  );
+  const { cart, loading } = useSelector((state) => state.cart);
 
   const openCart = () => setIsCartOpen(true);
   const closeCart = () => setIsCartOpen(false);
@@ -60,11 +61,11 @@ const Header = () => {
       setLoadingCategories(true);
       setError(null);
       const { data } = await axios.get(`${URL}/user/categories`, config);
-      console.log(data)
+      console.log(data);
       setCategories(data.categories || []);
     } catch (err) {
       console.error(err);
-      setError('Failed to load categories. Please try again.');
+      setError("Failed to load categories. Please try again.");
     } finally {
       setLoadingCategories(false);
     }
@@ -127,7 +128,7 @@ const Header = () => {
         fill="white"
       />
     </svg>
-  )
+  );
 
   return (
     <header className="bg-white shadow-sm fixed w-full top-0 z-50">
@@ -136,24 +137,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center">
-              <svg
-                className="h-8 w-8 text-mainclr"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z"
-                  fill="currentColor"
-                />
-                <path
-                  d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
-                  fill="white"
-                />
-              </svg>
-              <span className="ml-2 text-xl font-medium text-gray-900">
-                Fish Galaxy
-              </span>
+              <img className="w-36 xl:w-40 object-contain" src={Mlogo} alt="" />
             </Link>
           </div>
 
@@ -165,8 +149,11 @@ const Header = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${isActive ? "text-mainclr" : "text-gray-500 hover:text-mainclr"
-                    }`}
+                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                    isActive
+                      ? "text-mainclr"
+                      : "text-gray-500 hover:text-mainclr"
+                  }`}
                 >
                   {item.name}
                 </Link>
@@ -189,16 +176,15 @@ const Header = () => {
                 onClick={toggleProfile}
                 className="profile-button flex items-center border border-transparent text-sm font-medium rounded-full text-mainclr focus:outline-none ring-2 focus:ring-offset-2 focus:ring-mainclr"
               >
-
-                {
-                  user.profileImgURL ?
-                    <img
-                      className="w-8 md:w-12 aspect-square rounded-full object-cover"
-                      src={user?.profileImgURL}
-                      alt="User"
-                    />
-                    : <MdAccountCircle className="text-3xl" />
-                }
+                {user.profileImgURL ? (
+                  <img
+                    className="w-8 md:w-12 aspect-square rounded-full object-cover"
+                    src={user?.profileImgURL}
+                    alt="User"
+                  />
+                ) : (
+                  <MdAccountCircle className="text-3xl" />
+                )}
               </button>
 
               {/* Profile dropdown */}
@@ -206,22 +192,24 @@ const Header = () => {
                 <div className="absolute -left-10 md:left-auto md:right-0 mt-5 w-48 bg-white rounded-md shadow-lg py-1 z-50">
                   <div className="px-4 py-2 border-b border-gray-200">
                     <div className="flex items-center overflow-hidden">
-
-                      {
-                        user?.profileImgURL ?
-                          <img
-                            className="h-8 w-8 rounded-full object-cover"
-                            src={user?.profileImgURL}
-                            alt="User"
-                          />
-                          : <MdAccountCircle className="text-3xl text-mainclr" />
-                      }
+                      {user?.profileImgURL ? (
+                        <img
+                          className="h-8 w-8 rounded-full object-cover"
+                          src={user?.profileImgURL}
+                          alt="User"
+                        />
+                      ) : (
+                        <MdAccountCircle className="text-3xl text-mainclr" />
+                      )}
                       <div className="ml-2">
-                        <p className="text-sm font-medium text-gray-900">{user?.name}</p>
-                        {
-                          user?.email &&
-                          <p className="text-xs text-gray-500 ">{user?.email}</p>
-                        }
+                        <p className="text-sm font-medium text-gray-900">
+                          {user?.name}
+                        </p>
+                        {user?.email && (
+                          <p className="text-xs text-gray-500 ">
+                            {user?.email}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -265,9 +253,6 @@ const Header = () => {
               )}
             </div>
 
-
-
-
             {/* Mobile menu button */}
             <button
               onClick={toggleMobileMenu}
@@ -287,10 +272,11 @@ const Header = () => {
       {/* Mobile menu with animation */}
       <div
         ref={menuRef}
-        className={`lg:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen
-          ? "max-h-96 opacity-100"
-          : "max-h-0 opacity-0 overflow-hidden"
-          }`}
+        className={`lg:hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen
+            ? "max-h-96 opacity-100"
+            : "max-h-0 opacity-0 overflow-hidden"
+        }`}
       >
         <div className="pt-2 pb-3 space-y-1 px-4 bg-white shadow-md">
           {menuItems.map((item) => {
@@ -299,8 +285,11 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`block pl-3 pr-4 py-2 text-base font-medium rounded-md transition-colors duration-200 ${isActive ? "text-mainclr bg-gray-100" : "text-gray-500 hover:text-mainclr"
-                  }`}
+                className={`block pl-3 pr-4 py-2 text-base font-medium rounded-md transition-colors duration-200 ${
+                  isActive
+                    ? "text-mainclr bg-gray-100"
+                    : "text-gray-500 hover:text-mainclr"
+                }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}

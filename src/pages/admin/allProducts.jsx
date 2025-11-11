@@ -161,7 +161,7 @@ const Products = () => {
             </div>
           </div>
         </div>
-        <div className="overflow-x-auto bg-white rounded-lg min-h-[50vh]">
+        <div className="overflow-x-scroll bg-white rounded-lg min-h-[50vh]">
           {loading ? (
             <div className="flex items-center justify-center min-h-screen">
               <p>Loading</p>

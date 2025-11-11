@@ -174,7 +174,7 @@ const Retailer = () => {
                     <input
                       type="text"
                       placeholder="Search retailers..."
-                      className="pl-10  pr-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:w-64"
+                      className="pl-10 allsearch pr-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:w-64"
                       value={search}
                       onChange={(e) => {
                         setSearch(e.target.value);
